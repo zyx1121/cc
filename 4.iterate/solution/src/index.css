@@ -1,0 +1,78 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  background: #1a1b1e;
+  color: #e4e4e7;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #2c2e33;
+  background: #202126;
+}
+header #count { font-weight: 400; color: #888; font-size: 13px; }
+
+.tabs { margin-left: auto; display: flex; gap: 4px; }
+.tab {
+  background: none;
+  border: 1px solid #2c2e33;
+  color: #aaa;
+  padding: 5px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+}
+.tab:hover { background: #26272b; }
+.tab.active { background: #2f6fed; border-color: #2f6fed; color: #fff; }
+
+main { flex: 1; display: flex; overflow: hidden; }
+
+nav#list {
+  width: 280px;
+  border-right: 1px solid #2c2e33;
+  overflow-y: auto;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.item:hover { background: #26272b; }
+.item.active { background: #2f6fed; }
+.item .file { font-size: 14px; font-weight: 500; }
+.item .proj { font-size: 11px; color: #888; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.item.active .proj { color: #cdddff; }
+
+section { flex: 1; overflow-y: auto; padding: 20px 24px; }
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.empty { color: #777; padding: 24px; text-align: center; line-height: 1.9; }

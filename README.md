@@ -10,5 +10,4 @@ A hands-on Claude Code course. Each numbered folder is one chapter — work thro
 | 1 | [Meet Claude](./1.meet-claude/) | Talk to Claude Code, let it edit files, and meet how it remembers you — CLAUDE.md + auto-memory. |
 | 2 | [Build the Scope](./2.build-the-scope/) | Build "Claude Scope" from zero with Vibe Coding — an Electron app that views Claude's memory. |
 | 3 | [Make it a Skill](./3.make-it-a-skill/) | Freeze the Chapter 2 know-how into a Skill so Claude reuses it automatically. |
-
-> More chapters are on the way.
+| 4 | [Iterate](./4.iterate/) | Use that skill to grow Claude Scope — add a Skills view, and feel the "freeze → accelerate" loop. |
