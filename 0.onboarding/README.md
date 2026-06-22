@@ -1,99 +1,101 @@
-# Chapter 0 — Onboarding
+# 第 0 章 — 環境準備（Onboarding）
 
-Goal: take a brand-new computer and get to the point where **Claude Code is running and can set up your entire development environment for you.**
+目標：把一台全新的電腦，弄到 **Claude Code 跑得起來、而且能幫你把開發環境整個裝好** 的狀態。
 
-You'll do four things:
+你會做四件事：
 
-1. Open a terminal
-2. Install Claude Code
-3. Start it and log in
-4. Hand it `setup.md` to finish setting up your dev tools
+1. 打開終端機
+2. 安裝 Claude Code
+3. 啟動並登入
+4. 把 `setup.md` 交給它，自動裝好開發工具
 
-No prior terminal experience needed. Just follow the section for your platform — **Windows** or **macOS**.
+完全不需要終端機經驗，跟著你的系統做就好 —— **Windows** 或 **macOS**。
 
 ---
 
-## 1. Open a terminal
+## 1. 打開終端機
 
 ### 🪟 Windows
 
-Windows 11 comes with **Windows Terminal**:
+**對著左下角的「開始」按鈕按右鍵**，在跳出來的選單裡點 **終端機**：
 
-- Right-click the **Start** button → click **Terminal**, or
-- Press the **Start** key, type `Terminal`, and open it.
+![對 Windows 開始按鈕按右鍵，選單裡點「終端機」](./images/01-open-terminal.png)
 
-> On Windows 10 without Windows Terminal: press Start, type `PowerShell`, and open **Windows PowerShell**. (Or install "Windows Terminal" from the Microsoft Store.)
+> 找不到「終端機」？Windows 10 可能沒有，改點 **Windows PowerShell** 也可以（或到 Microsoft Store 安裝「Windows 終端機」）。
 
-By default this opens **PowerShell**. You can tell which shell you're in by the prompt:
+打開後預設是 **PowerShell**。怎麼看自己在哪種環境？看那一行開頭的提示字：
 
-- `PS C:\Users\You>` → you're in **PowerShell**
-- `C:\Users\You>` (no `PS`) → you're in **CMD**
+- `PS C:\Users\你的名字>` → 你在 **PowerShell**
+- `C:\Users\你的名字>`（開頭沒有 `PS`）→ 你在 **CMD**
 
-This matters for the next step — the install command is different for each.
+這會影響下一步要貼哪一個安裝指令。
 
 ### 🍎 macOS
 
-Press **⌘ + Space**, type `Terminal`, and press Enter. That opens **Terminal.app**.
+按 **⌘ + 空白鍵**，輸入 `Terminal`，按 Enter，就會打開「終端機」。
 
 ---
 
-## 2. Install Claude Code
+## 2. 安裝 Claude Code
 
-Copy the command for your platform, paste it into the terminal, press Enter, and wait for it to finish.
+把對應你系統的指令複製、貼到終端機、按 Enter，等它跑完。
 
-### 🪟 Windows — in **PowerShell**:
+### 🪟 Windows — 在 **PowerShell** 裡：
 
 ```
 irm https://claude.ai/install.ps1 | iex
 ```
 
-If your prompt is **CMD** instead (`C:\` with no `PS`), use this:
+跑完看到 `Claude Code successfully installed!` 就成功了：
 
-```
-curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
-```
+![在 PowerShell 執行 irm 安裝指令，顯示安裝成功](./images/02-install-claude-code.png)
 
-> Seeing `The token '&&' is not a valid statement separator`? You're in PowerShell — use the first command.
-> Seeing `'irm' is not recognized`? You're in CMD — use the second command.
+> 如果你的提示字開頭是 `C:\`、沒有 `PS`（代表你在 **CMD**），改用這一行：
+> ```
+> curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
+> ```
+> 簡單判斷：**提示字有 `PS` 就用最上面的 `irm`，只有 `C:\` 就用這一行。**
 
-### 🍎 macOS:
+### 🍎 macOS：
 
 ```
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-When it finishes, **close the terminal and open a new one** so it picks up the new `claude` command.
+裝完後，**把終端機關掉、重新開一個**，讓它認得新的 `claude` 指令。
 
 ---
 
-## 3. Start Claude Code and log in
+## 3. 啟動 Claude Code 並登入
 
-In the terminal, run:
+在終端機輸入：
 
 ```
 claude
 ```
 
-The first time, it opens your browser to log in. **Claude Code needs a paid plan** — Claude Pro, Max, Team, or Enterprise; the free plan doesn't include it. Sign in and approve.
+第一次會自動打開瀏覽器要你登入。**Claude Code 需要付費方案** —— Claude Pro、Max、Team 或 Enterprise 都可以，免費方案不能用。登入並授權。
 
-Back in the terminal, when you see Claude Code's input box (a prompt waiting for you to type), you're in. 🎉
+回到終端機，看到 Claude Code 的畫面（像下面這樣，最底下有一個可以打字的輸入框）就代表進去了 🎉
 
-> Optional: type `claude doctor` to double-check your install is healthy.
+![Claude Code 啟動後的歡迎畫面](./images/03-open-claude-code.png)
 
----
-
-## 4. Let Claude Code set up your dev environment
-
-Now hand Claude Code the [`setup.md`](./setup.md) from this chapter. It installs your tools (Git, Node.js, Python/uv, GitHub CLI) and walks you through connecting your GitHub account.
-
-**Simplest way** — paste this to Claude Code:
-
-> Read https://raw.githubusercontent.com/zyx1121/cc/main/0.onboarding/setup.md and set up my development environment by following it.
-
-> Already have this repo on your computer? Instead, `cd` into `0.onboarding`, start `claude` there, type `@setup.md`, and ask it to set up your environment.
-
-Claude Code takes it from there. When it gets to logging in to GitHub, **that part you do yourself in the browser** — it'll guide you step by step.
+> 想再確認裝得好不好，可以輸入 `claude doctor` 檢查。
 
 ---
 
-That's Chapter 0. Once your environment is ready, you're set for the rest of the course.
+## 4. 讓 Claude Code 幫你裝好開發環境
+
+接下來把這一章的 [`setup.md`](./setup.md) 交給 Claude Code，它會幫你裝好工具（Git、Node.js、Python/uv、GitHub CLI）並帶你綁定 GitHub 帳號。
+
+**最簡單的方式** —— 直接把這句貼給 Claude Code：
+
+> 讀 https://raw.githubusercontent.com/zyx1121/cc/main/0.onboarding/setup.md 這份文件，照著裡面的步驟幫我把開發環境準備好。
+
+> 已經把這個 repo 下載到電腦上了？那也可以 `cd` 進 `0.onboarding`，在裡面啟動 `claude`，輸入 `@setup.md` 再請它幫你配置環境。
+
+剩下的 Claude Code 會自己接手。輪到 **登入 GitHub** 那一步時，**那部分要你自己在瀏覽器完成** —— 它會一步一步引導你。
+
+---
+
+這就是第 0 章。環境準備好之後，你就可以接著上後面的章節了。
