@@ -48,7 +48,7 @@ Rule of thumb: **only install what Step 0 marked "missing"; skip what's already 
 
 A few things you must know:
 
-- **You don't install Python separately.** uv manages Python itself: after installing uv, run `uv python install` to add a recent Python (or uv pulls one automatically when needed). Don't grab Python from the website on top of this — multiple Pythons on one machine fight each other.
+- **You don't install Python separately.** uv manages Python itself. **A working `uv --version` does NOT mean Python is ready** — uv can be installed with zero interpreters behind it. Once uv is present, confirm one: run `uv python list`. If every line ends in `<download available>` (none actually installed), run `uv python install` to add a recent Python. Then `uv run python --version` should print a version. Don't grab Python from the website on top of this — multiple Pythons on one machine fight each other.
 - **You don't install ripgrep.** Claude Code ships with it built in, so your search already works.
 - **(Optional — don't auto-install these; ask the student or check the course requirements first)** `bun` (a faster JS runtime / package manager), `pnpm`, VS Code, PowerShell 7. When needed:
   - bun → macOS `brew install oven-sh/bun/bun`, Windows `powershell -c "irm bun.sh/install.ps1 | iex"`
@@ -86,8 +86,11 @@ git --version
 node --version
 npm --version
 uv --version
+uv run python --version
 gh --version
 ```
+
+`uv run python --version` is the real Python check — it confirms an interpreter is actually installed, not just uv (see the uv note in Step 1). If it can't find one, run `uv python install`, then re-check.
 
 All return a version = tools are in place; move on to connecting GitHub. If any still fails, go back and check PATH / reopen the terminal first; only if it's genuinely stuck, explain to the student where it's blocked.
 
